@@ -5,6 +5,8 @@ public abstract class Transport {
     private String model;
     private float engineVolume;
 
+    public abstract void defineType();
+
     public abstract void startMovement();
 
     public abstract void stopMovement();

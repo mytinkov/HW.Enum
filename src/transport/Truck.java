@@ -2,9 +2,11 @@ package transport;
 
 public class Truck extends Transport implements Competing {
 
+    private CargoType cargoType;
 
-    public Truck(String brand, String model, float engineVolume) {
+    public Truck(String brand, String model, float engineVolume, CargoType cargoType) {
         super(brand, model, engineVolume);
+        this.cargoType = cargoType;
     }
 
     @Override
@@ -14,6 +16,15 @@ public class Truck extends Transport implements Competing {
                 " / Модель = " + getModel() +
                 " / Объем двигателя = " + getEngineVolume();
     }
+
+    @Override
+    public void defineType() {
+            if (cargoType == null) {
+                System.out.println("Данных по авто недостаточно");
+            } else {
+                System.out.println("Тип авто - " + cargoType + ". Грузоподъемность от " + cargoType.getFrom() + " до " + cargoType.getTo());
+            }
+        }
 
     @Override
     public void startMovement() {
@@ -38,5 +49,13 @@ public class Truck extends Transport implements Competing {
     @Override
     public int getMaxSpeed() {
         return 45;
+    }
+
+    public CargoType getCargoType() {
+        return cargoType;
+    }
+
+    public void setCargoType(CargoType cargoType) {
+        this.cargoType = cargoType;
     }
 }

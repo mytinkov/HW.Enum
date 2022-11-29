@@ -2,9 +2,21 @@ package transport;
 
 public class Car extends Transport implements Competing {
 
+    private BodyType bodyType;
 
-    public Car(String brand, String model, float engineVolume) {
+    public Car(String brand, String model, float engineVolume, BodyType bodyType) {
         super(brand, model, engineVolume);
+        this.bodyType = bodyType;
+    }
+
+
+    @Override
+    public void defineType() {
+        if (bodyType == null) {
+            System.out.println("Данных по авто недостаточно");
+        } else {
+            System.out.println("Тип авто - " + bodyType);
+        }
     }
 
     @Override
@@ -28,6 +40,14 @@ public class Car extends Transport implements Competing {
     @Override
     public int getMaxSpeed() {
         return 120;
+    }
+
+    public BodyType getBodyType() {
+        return bodyType;
+    }
+
+    public void setBodyType(BodyType bodyType) {
+        this.bodyType = bodyType;
     }
 
     @Override
